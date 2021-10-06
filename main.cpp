@@ -21,7 +21,6 @@ int FastLog2(int a) {
 
 unsigned long long Digest(int board[4][4]) {
 	unsigned long long h = 0;
-
 	unsigned long long basis = 1;
 	for (int i = 3; i >= 0; i--) {
 		for (int j = 3; j >= 0; j--) {
@@ -30,7 +29,6 @@ unsigned long long Digest(int board[4][4]) {
 			basis *= 16;
 		}
 	}
-
 	return h;
 }
 
@@ -68,7 +66,6 @@ void PrintBoard(int board[4][4]) {
 			int i = y / 4;
 			for (int j = 0; j < 4; j++) {
 				printf("*");
-
 				if (board[i][j] == 0) {
 					printf("      ");
 				}
@@ -113,7 +110,6 @@ void PrintGame(int oldBoard[4][4], int newBoard[4][4], char a) {
 //return the number of 0s in the board
 int GetNEmptyPos(int b[4][4]) {
 	int count = 0;
-
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			if (b[i][j] == 0) {
@@ -121,7 +117,6 @@ int GetNEmptyPos(int b[4][4]) {
 			}
 		}
 	}
-
 	return count;
 }
 
@@ -136,7 +131,6 @@ void InitBoard(int board[4][4]) {
 	int initCol1, initRow1, initCol2, initRow2;
 	initCol1 = rand() % 4;
 	initRow1 = rand() % 4;
-
 	initCol2 = rand() % 4;
 	initRow2 = rand() % 4;
 
@@ -180,7 +174,6 @@ void UpdateIthColumn(int board[4][4], int i, char a) {
 
 	int hasNumber = 0;
 	int nextPos = 0;
-
 	for (int j = first; j >= 0 && j < 4; j += dir) {
 		if (board[j][i] > 0) {
 			hasNumber = 1;
@@ -280,7 +273,6 @@ int IsGameOver(int board[4][4]) {
 			}
 		}
 	}
-
 	return 1;
 }
 
@@ -300,9 +292,7 @@ void UpdateBoard(int board[4][4], char a) {
 
 void AddNewNumber(int board[4][4]) {
 	int nEmptyPos = GetNEmptyPos(board);
-
 	int r = 1 + rand() % nEmptyPos;
-
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			if (board[i][j] == 0) {
